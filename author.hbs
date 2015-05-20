@@ -1,0 +1,103 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+
+{{! The big featured header on the homepage, with the site logo and description }}
+
+<script>
+    (function ($) {
+        "use strict";
+    
+        $(document).ready(function(){
+                        
+            var $window = $(window),
+                $image = $('.post-image-image');
+            $window.on('scroll', function() {
+                var top = $window.scrollTop();
+    
+                if (top < 0 || top > 1500) { return; }
+                $image
+                    .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+                    .css('opacity', 1-Math.max(top/700, 0));
+            });
+            $window.trigger('scroll');
+            
+            var height = $('.post-image-image').height();
+                $('.content').css('padding-top', height + 'px');
+                
+            $(function() {
+              $('a[href*=#]:not([href=#])').click(function() {
+                if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                  var target = $(this.hash);
+                  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                  if (target.length) {
+                    $('html,body').animate({
+                      scrollTop: target.offset().top
+                    }, 500);
+                    return false;
+                  }
+                }
+              });
+            });
+    
+        });
+    
+    }(jQuery));
+</script>
+{{#author}}
+<div class="article tag-articleimage">
+<div class="post-image">
+    <div class="post-image-image {{#if cover}}" style="background-image: url({{cover}}){{else}}no-cover{{/if}}" data-0="opacity: 1; top: 0px" data-500="opacity: 0.2; top: 250px">
+        Post Image
+    </div>
+    <header class="post-header">
+        <a href="/" class="button-back"><i class="fa fa-chevron-left "></i></a>
+        {{#if @blog.logo}}<div class="blog-logo" style="background-image: url({{@blog.logo}})">Blog Logo</div>{{/if}}
+    </header>
+    <div class="post-head">
+        <div class="post-author">
+            {{#if image}}<div class="author-image" style="background-image: url({{image}})">Blog Logo</div>{{/if}}
+        </div>
+        <h1 class="post-title">{{name}}</h1>
+        <span class="post-meta author">
+            {{bio}}
+            <br><br>
+            <div class="author-meta">
+                {{#if location}}<span class="author-location icon-location">{{location}}</span>{{/if}}
+                {{#if website}}<span class="author-link icon-link"><a href="{{website}}">{{website}}</a></span>{{/if}}
+                <span class="author-stats"><i class="icon-stats"></i> {{plural ../pagination.total empty='No posts' singular='% post' plural='% posts'}}</span>
+            </div>
+        </span>
+        
+    </div>
+    <center><a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a></center>
+</div>
+</div>
+
+{{! The main content area on the homepage }}
+
+<main class="content tag-list" role="main">
+    
+    
+    {{/author}}
+    {{! Each post will be output using this markup }}
+    {{#foreach posts}}
+
+    <article class="{{post_class}}">
+        <header class="post-header">
+            <h2 class="post-title"><a href="{{url}}">{{{title}}}</a></h2>
+            <span class="post-meta"><time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMM YYYY"}}</time> {{tags prefix="on "}}</span>
+        </header>
+        <section class="post-excerpt">
+            <p>{{excerpt}}&hellip;</p>
+        </section>
+    </article>
+
+    {{/foreach}}
+
+    {{!! After all the posts, we have the previous/next pagination links }}
+    
+    <h5 class="index-headline bottom"><span><a href="/">Back to Overview</a>&nbsp;&nbsp;·&nbsp;&nbsp;Article list for {{author.name}}&nbsp;&nbsp;·&nbsp;&nbsp;{{pagination}}</span></h5>
+
+</main>

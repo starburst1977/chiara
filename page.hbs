@@ -1,0 +1,91 @@
+{{!< default}}
+
+{{! This is a page template. A page outputs content just like any other post, and has all the same
+    attributes by default, but you can also customise it to behave differently if you prefer. }}
+
+<main class="content" role="main">
+
+    <article class="{{post_class}} page tag-articleimage">
+        {{#post}}
+        {{#if image}}
+            
+            <div class="post-image">
+                <div class="post-image-image" data-0="opacity: 1; top: 0px" data-500="opacity: 0.2; top: 250px" style="background-image: url({{image}})">
+                    Post Image
+                </div>
+                <header class="post-header">
+                    <a href="/" class="button-back"><i class="fa fa-chevron-left "></i></a>
+                    {{#if @blog.logo}}<div class="blog-logo" style="background-image: url({{@blog.logo}})">Blog Logo</div>{{/if}}
+                </header>
+                <div class="post-head">
+                    <h1 class="post-title">{{{title}}}</h1>
+                    <span class="post-meta"><time datetime="{{date format="YYYY-MM-DD"}}">{{date format='DD MMM YYYY'}}</time> {{tags prefix="on " separator=" | "}}</span>
+                </div>
+                <center><a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a></center>
+            </div>
+            
+            <script>
+                (function ($) {
+                    "use strict";
+                
+                    $(document).ready(function(){
+                                    
+                        var $window = $(window),
+                            $image = $('.post-image-image');
+                        $window.on('scroll', function() {
+                            var top = $window.scrollTop();
+                
+                            if (top < 0 || top > 1500) { return; }
+                            $image
+                                .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+                                .css('opacity', 1-Math.max(top/700, 0));
+                        });
+                        $window.trigger('scroll');
+                        
+                        var height = $('.post-image-image').height();
+                            $('.post-content').css('padding-top', height + 'px');
+                        
+                        $(function() {
+                          $('a[href*=#]:not([href=#])').click(function() {
+                            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                              var target = $(this.hash);
+                              target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                              if (target.length) {
+                                $('html,body').animate({
+                                  scrollTop: target.offset().top
+                                }, 500);
+                                return false;
+                              }
+                            }
+                          });
+                        });
+                
+                    });
+                
+                }(jQuery));
+            </script>
+            
+        {{else}}
+            
+            <header class="post-header">
+                <a href="/" class="button-back"><i class="fa fa-chevron-left "></i></a>
+                {{#if @blog.logo}}<div class="blog-logo" style="background-image: url({{@blog.logo}})">Blog Logo</div>{{/if}}
+            </header>
+            
+            <h1 class="post-title">{{{title}}}</h1>
+            <span class="post-meta"><time datetime="{{date format="YYYY-MM-DD"}}">{{date format='DD MMM YYYY'}}</time> {{tags prefix="on " separator=" | "}}</span>
+            
+        {{/if}}
+        
+        
+        <section class="post-content">
+            <a name="topofpage"></a>
+            {{content}}
+        </section>
+
+        {{/post}}
+        
+
+    </article>
+
+</main>

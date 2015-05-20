@@ -1,0 +1,1197 @@
+
+@import 'bourbon'
+
+$font-one: 'Source Sans Pro'
+$font-two: 'Linux Libertine'
+
+$rs: 16px
+
+/* Color Scheme */
+
+$color-white: #FFFFFF
+$color-black: #000000
+$color-yellow: #e5a825
+$color-blue: #1693A5
+$color-green: #45a516
+$color-red: #F02311
+
+@mixin respond-to($breakpoint)
+	@media only screen and (min-width: $breakpoint + px)
+		@content
+
+.cf
+	@include clearfix
+
+body, html
+	background-color: $color-white
+	font-family: $font-one
+	color: $color-black
+	-webkit-hyphens: auto
+	-moz-hyphens: auto
+	hyphens: auto
+	font-weight: 400
+	font-style: normal
+	-moz-font-feature-settings: "liga=1, dlig=1"
+	-ms-font-feature-settings: "liga", "dlig"
+	-webkit-font-feature-settings: "liga", "dlig"
+	-o-font-feature-settings: "liga", "dlig"
+	font-feature-settings: "liga", "dlig"
+	font-size: 12px
+	@include respond-to(800)
+		font-size: 14px
+	@include respond-to(1200)
+		font-size: 16px
+	@include respond-to(1600)
+		font-size: 18px
+	a
+		color: $color-blue
+	&.fontSerif
+		font-family: $font-two
+	
+.site-head, .content, .site-footer
+	width: 100%
+	margin: 0 auto
+	@include respond-to(800)
+		width: 62%
+	@include respond-to(1400)
+		width: 50%
+	@include respond-to(2000)
+		width: 38%
+
+.site-head-content
+	position: relative
+	margin-top: golden-ratio(1rem,  2)
+	text-align: center
+	@include clearfix
+	padding: 0 0 golden-ratio(1rem,  1)
+	@include respond-to(800)
+		padding: 0 $rs*2 golden-ratio(1rem,  3)
+		margin-top: golden-ratio(1rem,  4)
+	.left
+		float: left
+		width: 100%
+		position: relative
+		padding-top: golden-ratio(1rem,  5)
+		@include respond-to(800)
+			width: 38%
+	.right
+		float: right
+		width: 100%
+		text-align: center
+		@include box-sizing(border-box)
+		padding: 0 2rem 0
+		@include respond-to(800)
+			width: 62%
+			text-align: left
+			padding-left: 2rem
+	.blog-logo
+		width: golden-ratio(1rem,  4)
+		height: golden-ratio(1rem,  4)
+		position: absolute
+		top: 0
+		right: 50%
+		margin-right: -((golden-ratio(1rem,  4)/7))
+		margin-top: 2rem
+		background-size: cover
+		border-radius: 50%
+		z-index: 99
+		text-indent: -9999px
+		@include respond-to(800)
+			right: golden-ratio(1rem,  4)
+			margin-right: 0
+	.blog-cover
+		width: golden-ratio(1rem,  5)
+		height: golden-ratio(1rem,  5)
+		position: absolute
+		top: 0
+		right: 50%
+		margin-right: -((golden-ratio(1rem,  5)/1.5))
+		border-radius: 50%
+		z-index: 98
+		background-size: cover
+		text-indent: -9999px
+		@include respond-to(800)
+			right: 0
+			margin-right: 0
+	.blog-title
+		font-size: modular-scale(1rem, 2, 1.33)
+		line-height: 1
+		font-family: $font-one
+		color: $color-black
+		font-weight: 500
+		margin: 0
+		padding: golden-ratio(1rem,  1) 0 0
+	.blog-description
+		font-size: modular-scale(1rem, 0, 1.33)
+		line-height: 1.25
+		font-family: $font-one
+		font-weight: 300
+		color: #666
+		margin: 0
+		padding: 0
+	.blog-social
+		@include clearfix
+		padding: golden-ratio(1rem,  0) 0
+		a
+			display: inline-block
+			width: golden-ratio(1rem, 2)
+			height: golden-ratio(1rem, 2)
+			border-radius: 50%
+			background-color: $color-red
+			text-align: center
+			margin-right: golden-ratio(1rem,  -1)
+			@include transition (all 0.35s ease-in-out)
+			&:nth-child(2)
+				background-color: $color-yellow
+			&:nth-child(3)
+				background-color: $color-blue
+			&:nth-child(4)
+				background-color: $color-green
+			&:hover
+				background-color: $color-black
+				i
+					color: $color-white
+			i
+				color: $color-white
+				font-size: golden-ratio(1rem,  1)
+				line-height: golden-ratio(1rem,  2)
+
+.lessHeadSpace .site-head-content
+	margin-top: golden-ratio(1rem,  1)
+	text-align: center
+	@include clearfix
+	padding: 0 0 golden-ratio(1rem,  1)
+	@include respond-to(800)
+		padding: 0 $rs*2 golden-ratio(1rem,  2)
+		margin-top: golden-ratio(1rem,  2)
+
+.head-links
+	padding: 0.66rem 0 0
+	font-weight: 300
+	color: #ccc
+	font-size: modular-scale(1rem, 0, 1.33)
+	a
+		color: $color-blue
+		margin: 0
+		text-decoration: none
+		&:hover
+			text-decoration: underline
+			color: $color-black
+			
+.index-headline
+	text-align: center
+	line-height: modular-scale(1rem, 0, 1.33)
+	height: modular-scale(1rem, 0, 1.33)
+	position: relative
+	font-weight: 300
+	margin: golden-ratio(1rem,  2) 0 0
+	padding: 0
+	&.bottom
+		margin: golden-ratio(1rem, 1) 0 golden-ratio(1rem, 2)
+	span
+		background-color: #fff
+		font-size: modular-scale(1rem, -1, 1.33)
+		color: #aaa
+		padding: 0 $rs
+		z-index: 10
+		position: relative
+	nav
+		span
+			padding: 0
+	&:after
+		position: absolute
+		content: ""
+		top: $rs/2
+		left: 0
+		right: 0
+		margin: 0 auto
+		border-top: 1px solid #f5f5f5
+		z-index: 0
+
+.index
+	@include clearfix
+	.frame
+		padding: golden-ratio(1rem,  0) 0 0
+	.post
+		padding: golden-ratio(1rem,  0) golden-ratio(1rem,  1)
+		width: 100%
+		@include box-sizing(border-box)
+		@include respond-to(900)
+			width: 49%
+			display: inline-block
+			vertical-align: top
+		.article-item
+			color: $color-black
+			text-decoration: none
+			display: block
+			@include transition (all 0.35s ease-in-out)
+			&:hover
+				.post-title
+					text-decoration: underline
+				.post-excerpt
+					p
+						color: $color-black
+		.post-meta
+			font-size: modular-scale(1rem, -1, 1.33)
+			line-height: $rs
+			height: $rs
+			white-space: nowrap
+			overflow: hidden
+			text-overflow: ellipsis
+			padding: modular-scale(1rem, -2, 1.33) 0
+			color: #bbb
+			font-weight: 300
+			display: block
+			a
+				text-decoration: none
+				&:hover
+					text-decoration: underline
+		.post-header
+			.post-title
+				font-size: modular-scale(1rem, 1, 1.33)
+				padding: modular-scale(1rem, 0, 1.33) 0 0
+				margin: 0
+				line-height: modular-scale(1rem, 2, 1.33)
+				height: modular-scale(1rem, 2, 1.33)
+				font-weight: 500
+				white-space: nowrap
+				overflow: hidden
+				text-overflow: ellipsis
+				a
+					color: $color-black
+					text-decoration: none
+		.post-excerpt
+			padding: 0 0
+			p
+				font-size: modular-scale(1rem, 0, 1.33)
+				line-height: 1.4
+				color: #666
+				font-weight: 300
+				padding: 0
+				margin: 0
+	.post.featured
+		width: 100%
+		float: none
+		.post-header
+			.post-title
+				font-size: modular-scale(1rem, 2, 1.33)
+				line-height: modular-scale(1rem, 3, 1.33)
+				height: modular-scale(1rem, 3, 1.33)
+		.post-excerpt
+			p
+				font-size: modular-scale(1rem, 1, 1.33)
+
+.singleCol .index
+	.post
+		@include respond-to(900)
+		width: 100%
+		float: none
+
+.pagination
+	padding: 0
+	display: inline
+	@include box-sizing(border-box)
+	font-size: modular-scale(1rem, -1, 1.33)
+	a
+		margin: 0
+
+.archive-template
+	.index-headline.featured
+		display: none
+
+.site-footer
+	text-align: center
+	@include box-sizing(border-box)
+	@include clearfix
+	color: #bbb
+	font-size: modular-scale(1rem, -1, 1.33)
+	padding: golden-ratio(1rem,  0) 0 golden-ratio(1rem,  2)
+	a
+		color: #999
+		&:hover
+			color: $color-blue
+	.left
+		float: left
+		width: 49%
+		text-align: right
+		input
+			border: 1px #ddd solid
+			border-radius: 3px
+			padding: $rs/3 $rs/2
+			
+	.right
+		float: right
+		width: 49%
+		text-align: left
+		padding-top: $rs/2
+	
+#results
+	padding: 0 golden-ratio(1rem,  2)
+	a
+		display: block
+		padding: golden-ratio(1rem, 0) golden-ratio(1rem, 2)
+		margin-bottom: golden-ratio(1rem, -1)
+		background-color: #f5f5f5
+		border-radius: golden-ratio(1rem, -1)
+		text-decoration: none
+		h2
+			color: #333
+			padding: 0
+			margin: 0
+			font-size: modular-scale(1rem, 1, 1.33)
+			font-weight: 300
+		h4
+			color: #aaa
+			font-size: modular-scale(1rem, -1, 1.33)
+			padding: golden-ratio(1rem, -1) 0 0
+			margin: 0
+			font-weight: 500
+
+.article, .page
+	.post-header
+		position: relative
+		margin-top: golden-ratio(1rem,  4)
+		text-align: center
+		@include clearfix
+		padding: 0 0 golden-ratio(1rem,  4)
+		.button-back
+			width: golden-ratio(1rem,  2)
+			height: golden-ratio(1rem,  2)
+			position: absolute
+			top: 0
+			right: 50%
+			margin-right: -((golden-ratio(1rem,  2)/4))
+			margin-top: 0.85rem
+			background-size: cover
+			border-radius: 50%
+			z-index: 99
+			background-color: $color-blue
+			text-align: center
+			line-height: golden-ratio(1rem,  2)
+			color: $color-white
+			font-size: 1rem
+			text-indent: 0
+			@include transition (all 0.35s ease-in-out)
+			&:hover
+				background-color: $color-red
+		.blog-logo
+			width: golden-ratio(1rem,  3)
+			height: golden-ratio(1rem,  3)
+			position: absolute
+			top: 0
+			right: 50%
+			margin-right: -((golden-ratio(1rem,  3)/1.2))
+			border-radius: 50%
+			z-index: 98
+			background-size: cover
+			text-indent: -9999px
+	.author-image
+		width: golden-ratio(1rem,  4)
+		height: golden-ratio(1rem,  4)
+		border-radius: 50%
+		z-index: 98
+		background-size: cover
+		text-indent: -9999px
+		margin: 0 auto
+	.author-name
+		display: block
+		text-align: center
+		font-size: modular-scale(1rem, -1, 1.33)
+		color: #aaa
+		padding: golden-ratio(1rem, -1) 0
+		text-indent: 0
+		line-height: modular-scale(1rem, 0, 1.33)
+		a
+			color: $color-yellow
+			text-decoration: none
+	.topofpage
+		text-indent: 0
+		position: absolute
+		bottom: golden-ratio(1rem,  1)
+		color: #fff
+		font-size: modular-scale(1rem, 2, 1.33)
+	.post-title
+		font-size: modular-scale(1rem, 4, 1.33)
+		text-align: center
+		line-height: 1.25
+		font-weight: 300
+		margin: 0
+		padding: golden-ratio(1rem,  -1) 0 0
+		-webkit-hyphens: manual
+		-moz-hyphens: manual
+		hyphens: manual
+		letter-spacing: -1px
+		@include respond-to(800)
+			padding: golden-ratio(1rem, 0) modular-scale(1rem, 2, 1.33) 0
+		@include respond-to(1200)
+			padding: golden-ratio(1rem, 1) modular-scale(1rem, 3, 1.33) 0
+		@include respond-to(1600)
+			padding: golden-ratio(1rem, 1) modular-scale(1rem, 4, 1.33) 0
+	.post-meta
+		display: block
+		text-align: center
+		font-size: modular-scale(1rem, -1, 1.33)
+		color: #aaa
+		padding: 0 0 golden-ratio(1rem,  3)
+	.post-content, .post-footer
+		font-size: modular-scale(1rem, 1, 1.33)
+		padding: 0 modular-scale(1rem, 1, 1.33)
+		@include respond-to(800)
+			padding: 0 modular-scale(1rem, 2, 1.33)
+		@include respond-to(1200)
+			padding: 0 modular-scale(1rem, 3, 1.33)
+		@include respond-to(1600)
+			padding: 0 modular-scale(1rem, 4, 1.33)
+		h1
+			font-size: modular-scale(1rem, 3, 1.33)
+			padding: modular-scale(1rem, 2, 1.33) 0
+			line-height: 1.15
+			font-weight: 300
+			text-align: center
+			margin: 0
+			-webkit-hyphens: manual
+			-moz-hyphens: manual
+			hyphens: manual
+		h2
+			font-size: modular-scale(1rem, 3, 1.33)
+			padding: modular-scale(1rem, 2, 1.33) 0
+			line-height: 1.15
+			margin: 0
+		h3
+			font-size: modular-scale(1rem, 2, 1.33)
+			padding: modular-scale(1rem, 2, 1.33) 0
+			line-height: 1.15
+			margin: 0
+		h4
+			font-size: modular-scale(1rem, 1, 1.33)
+			padding: modular-scale(1rem, 2, 1.33) 0 0
+			margin: 0
+		img
+			max-width: 100%
+			border-radius: golden-ratio(1rem,  0)
+			margin: 0 auto
+			display: block
+		figure
+			padding: 0 0 modular-scale(1rem, 2, 1.33)
+			margin: 0
+			text-align: center
+			figcaption
+				padding: modular-scale(1rem, -1, 1.33) 0 0
+				font-style: italic
+				color: #aaa
+				font-size: modular-scale(1rem, 0, 1.33)
+		p
+			font-size: modular-scale(1rem, 1, 1.33)
+			line-height: 1.4
+			padding: 0 0 modular-scale(1rem, 2, 1.33)
+			margin: 0
+		code
+			background-color: $color-black
+			color: #fff
+			border-color: $color-black
+			font-family: Inconsolata, monospace, sans-serif
+			font-size: modular-scale(1rem, 0, 1.33)
+			border-radius: golden-ratio(1rem,  -2)
+			padding: 2px 4px 4px
+			position: relative
+			top: -3px
+			white-space: nowrap
+			-webkit-hyphens: none
+			-moz-hyphens: none
+			hyphens: none
+		pre > code
+			background-color: $color-black
+			border-color: $color-black
+			@include box-sizing(border-box)
+			padding: modular-scale(1rem, 1, 1.33) modular-scale(1rem, 2, 1.33)
+			color: $color-white
+			font-size: modular-scale(1rem, 0, 1.33)
+			line-height: 1.4
+			margin-left: -5%
+			width: 110%
+			display: block
+			white-space: pre
+			overflow: auto
+			border-radius: golden-ratio(1rem,  0)
+		pre
+			padding: 0
+			margin: 0 0 2rem
+			@include box-sizing(border-box)
+		pre code, tt
+			white-space: -moz-pre-wrap
+			white-space: pre-wrap
+			border: none
+		hr
+			border: 0
+			padding: 0
+			display: block
+			width: 20%
+			margin: modular-scale(1rem, 1, 1.33) auto modular-scale(1rem, 1, 1.33) auto
+			border: 1px solid #ccc
+		ul, ol
+			padding: 0 0 modular-scale(1rem, 2, 1.33)
+			margin: 0
+			li
+				margin-left: golden-ratio(1rem,  2)
+				list-style-type: disc
+				padding: 0
+				p
+					padding: 0 0 golden-ratio(1rem,  1)
+		ol li
+			list-style-type: decimal
+		blockquote
+			font-style: italic
+			font-size: modular-scale(1rem, 1, 1.33)
+			line-height: 1.4
+			padding: modular-scale(1rem, 2, 1.33) 0 0 modular-scale(1rem, 2, 1.33)
+			border-left: $rs/2 $color-yellow solid
+			margin: 0 0 modular-scale(1rem, 2, 1.33)
+		kbd
+			display: inline-block
+			margin-bottom: golden-ratio(1rem,  1)
+			padding: 1px 8px
+			border: #ccc 1px solid
+			color: $color-black
+			text-shadow: #fff 0 1px 0
+			font-size: 0.9em
+			font-weight: bold
+			background: $color-yellow
+			border-radius: 4px
+			box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 0 #fff inset
+		table
+			-moz-box-sizing: border-box
+			box-sizing: border-box
+			margin: 0 0 golden-ratio(1rem,  1)
+			width: 100%
+			max-width: 100%
+			background-color: transparent
+		table th, table td
+			padding: golden-ratio(1rem,  0)
+			line-height: 1.5
+			text-align: left
+			vertical-align: top
+			border-top: 1px solid #ccc
+		table th
+			color: $color-black
+		table caption + thead tr:first-child th, table caption + thead tr:first-child td, table colgroup + thead tr:first-child th, table colgroup + thead tr:first-child td, table thead:first-child tr:first-child th, table thead:first-child tr:first-child td
+			border-top: 0
+		table tbody + tbody
+			border-top: 2px solid #efefef
+		table table table
+			background-color: #fff
+		table tbody > tr:nth-child(odd) > td, table tbody > tr:nth-child(odd) > th
+			background-color: $color-white
+		table.plain
+			tbody > tr:nth-child(odd) > td, tbody > tr:nth-child(odd) > th
+				background: transparent
+
+.article, .page
+	&.tag-articleimage
+		.post-head
+			position: absolute
+			bottom: 0
+			left: 0
+			right: 0
+			@include linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%)
+		.post-image
+			background-size: cover
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			text-indent: -9999px
+			padding-top: 33%
+			z-index: 1
+			background-color: #000
+			overflow: hidden
+			.post-image-image
+				position: absolute
+				left: 0
+				right: 0
+				bottom: 0
+				top: 0
+				background-size: cover
+				text-indent: -9999px
+				background-position: center
+		.post-header
+			position: absolute
+			top: golden-ratio(1rem, 1)
+			left: 0
+			right: 0
+			z-index: 999
+			text-align: center
+			@include clearfix
+			padding: 0 0 golden-ratio(1rem,  4)
+			.button-back
+				width: golden-ratio(1rem,  2)
+				height: golden-ratio(1rem,  2)
+				position: absolute
+				top: 0
+				right: 50%
+				margin-right: -((golden-ratio(1rem,  2)/4))
+				margin-top: 0.85rem
+				background-size: cover
+				border-radius: 50%
+				z-index: 99
+				background-color: $color-blue
+				text-align: center
+				line-height: golden-ratio(1rem,  2)
+				color: $color-white
+				font-size: 1rem
+				@include transition (all 0.35s ease-in-out)
+				&:hover
+					background-color: $color-red
+			.blog-logo
+				width: golden-ratio(1rem,  3)
+				height: golden-ratio(1rem,  3)
+				position: absolute
+				top: 0
+				right: 50%
+				margin-right: -((golden-ratio(1rem,  3)/1.2))
+				border-radius: 50%
+				z-index: 98
+				background-size: cover
+				text-indent: -9999px
+		.post-title
+			font-size: modular-scale(1rem, 4, 1.33)
+			text-align: center
+			line-height: 1.25
+			font-weight: 700
+			margin: 0
+			text-indent: 0
+			z-index: 999
+			color: #fff
+			padding: golden-ratio(1rem,  -1) 0 golden-ratio(1rem,  -1)
+			letter-spacing: -1px
+			@include respond-to(800)
+				padding: golden-ratio(1rem, 0) modular-scale(1rem, 2, 1.33) golden-ratio(1rem,  -1)
+			@include respond-to(1200)
+				padding: golden-ratio(1rem, 2) modular-scale(1rem, 3, 1.33) golden-ratio(1rem,  -1)
+			@include respond-to(1600)
+				padding: golden-ratio(1rem, 2) modular-scale(1rem, 4, 1.33) golden-ratio(1rem,  -1)
+		.post-meta
+			display: block
+			text-align: center
+			text-indent: 0
+			font-size: modular-scale(1rem, -1, 1.33)
+			color: rgba(255,255,255,0.62)
+			padding: 0 0 golden-ratio(1rem, 3)
+			a
+				color: $color-yellow
+				&:hover
+					color: $color-white
+			&.author
+				padding: 0 golden-ratio(1rem, 4) golden-ratio(1rem, 4)
+				font-size: modular-scale(1rem, 0, 1.33)
+				div
+					font-size: modular-scale(1rem, 0, 1.33)
+					color: #999
+					span
+						padding: 0 modular-scale(1rem, -3, 1.33)
+						color: #666
+		.post-content
+			font-size: modular-scale(1rem, 1, 1.33)
+			padding: 0 modular-scale(1rem, 1, 1.33) 0
+			margin-top: 0
+			@include respond-to(800)
+				padding: golden-ratio(1rem,  1) modular-scale(1rem, 2, 1.33) 0
+			@include respond-to(1200)
+				padding: golden-ratio(1rem,  1) modular-scale(1rem, 3, 1.33) 0
+			@include respond-to(1600)
+				padding: golden-ratio(1rem,  1) modular-scale(1rem, 4, 1.33) 0
+
+.page-about
+	.post-head
+		position: absolute
+		bottom: 0
+		left: 0
+		right: 0
+		@include linear-gradient(rgba(0,0,0,0) 62%, rgba(0,0,0,1) 100%)
+	.post-image
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 25%
+		background-color: #000
+		overflow: hidden
+		.post-image-image
+			position: absolute
+			left: 0
+			right: 0
+			bottom: 0
+			top: 0
+			background-size: cover
+			text-indent: -9999px
+			background-position: center
+	.post-header
+		position: absolute
+		bottom: 23%
+		left: 0
+		right: 0
+		text-align: center
+		@include clearfix
+		padding: 0 0 golden-ratio(1rem,  4)
+		.button-back
+			width: golden-ratio(1rem,  2)
+			height: golden-ratio(1rem,  2)
+			position: absolute
+			top: 0
+			right: 50%
+			margin-right: 3rem
+			margin-top: golden-ratio(1rem,  3)
+			background-size: cover
+			border-radius: 50%
+			z-index: 99
+			background-color: $color-blue
+			text-align: center
+			line-height: golden-ratio(1rem,  2)
+			color: $color-white
+			font-size: 1rem
+			@include transition (all 0.35s ease-in-out)
+			&:hover
+				background-color: $color-red
+		.blog-logo
+			width: golden-ratio(1rem,  5)
+			height: golden-ratio(1rem,  5)
+			position: absolute
+			top: 0
+			right: 50%
+			margin-right: -(golden-ratio(1rem,  4))
+			border-radius: 50%
+			z-index: 98
+			background-size: cover
+			text-indent: -9999px
+	.post-content
+		font-size: modular-scale(1rem, 1, 1.33)
+		padding: golden-ratio(1rem,  1) modular-scale(1rem, 1, 1.33) 0
+		margin-top: 0
+		@include respond-to(800)
+			padding: golden-ratio(1rem,  1) modular-scale(1rem, 2, 1.33) 0
+		@include respond-to(1200)
+			padding: golden-ratio(1rem,  1) modular-scale(1rem, 3, 1.33) 0
+		@include respond-to(1600)
+			padding: golden-ratio(1rem,  1) modular-scale(1rem, 4, 1.33) 0
+
+
+.article .post-footer
+	.author
+		font-size: modular-scale(1rem, 0, 1.33)
+		position: relative
+		width: 62%
+		margin: golden-ratio(1rem, 3) auto 0
+		padding: 0 0 golden-ratio(1rem, 2) golden-ratio(1rem, 4)
+		.author-image
+			width: golden-ratio(1rem,  4)
+			height: golden-ratio(1rem,  4)
+			position: absolute
+			top: 0
+			left: 0
+			background-size: cover
+			border-radius: 50%
+			text-indent: -9999px
+		h4
+			font-size: modular-scale(1rem, 0, 1.33)
+			padding: 0 0 0 golden-ratio(1rem, 2)
+			margin: 0
+		p
+			font-size: modular-scale(1rem, 0, 1.33)
+			margin: 0
+			padding: 0 0 0 golden-ratio(1rem, 2)
+			color: #999
+	.share
+		font-size: modular-scale(1rem, 0, 1.33)
+		padding: golden-ratio(1rem, 2) 0 golden-ratio(1rem, 4)
+		.left
+			float: left
+			width: 38%
+			@include box-sizing(border-box)
+			padding: 0 1rem 0 0
+			text-align: right
+			a
+				text-decoration: none
+				i
+					margin-right: 0.5rem
+		.right
+			float: right
+			width: 62%
+			@include box-sizing(border-box)
+			padding: 0 0 0 1rem
+			p
+				font-size: modular-scale(1rem, 0, 1.33)
+				color: #999
+				a
+					text-decoration: none
+					margin-left: 1rem
+.page
+	.post-title
+		padding-bottom: golden-ratio(1rem, 2)
+	.post-content
+		padding-bottom: golden-ratio(1rem, 3)
+
+.tag-list
+	.tag-archive-header h1
+		font-weight: 200
+		text-align: center
+		padding: golden-ratio(1rem, 1) 0 0
+	.post-meta
+		font-size: modular-scale(1rem, -1, 1.33)
+		line-height: $rs
+		height: $rs
+		white-space: nowrap
+		overflow: hidden
+		text-overflow: ellipsis
+		padding: modular-scale(1rem, -2, 1.33) 0
+		color: #bbb
+		font-weight: 300
+		display: block
+		a
+			text-decoration: none
+			&:hover
+				text-decoration: underline
+	.post-title
+		font-size: modular-scale(1rem, 1, 1.33)
+		padding: modular-scale(1rem, 0, 1.33) 0 0
+		margin: 0
+		line-height: modular-scale(1rem, 2, 1.33)
+		height: modular-scale(1rem, 2, 1.33)
+		font-weight: 500
+		white-space: nowrap
+		overflow: hidden
+		text-overflow: ellipsis
+		a
+			color: $color-black
+			text-decoration: none
+	.post-excerpt
+		padding: 0 0 modular-scale(1rem, 0, 1.33)
+		p
+			font-size: modular-scale(1rem, 0, 1.33)
+			line-height: 1.4
+			color: #666
+			font-weight: 300
+			padding: 0
+			margin: 0
+	.post
+		padding: golden-ratio(1rem,  0) golden-ratio(1rem,  1)
+		&:hover
+			.post-title
+				text-decoration: underline
+			.post-excerpt
+				p
+					color: $color-black
+
+.ad
+	background-color: #f9f9f9
+	border-radius: modular-scale(1rem, -2, 1.33)
+	width: 100%
+	margin: 0 auto golden-ratio(1rem, 3)
+	position: relative
+	padding: $rs
+	height: 130px
+	@include box-sizing(border-box)
+	.fusion-wrap
+		@include clearfix
+	img
+		width: 130px !important
+		margin-left: 0 !important
+		border-radius: 0 !important
+	.fusion-text, .fusion-poweredby
+		position: relative
+		padding-left: 130+$rs*2
+		display: block
+		text-decoration: none
+		color: #666
+		font-size: modular-scale(1rem, 1, 1.33)
+		&:hover
+			color: $color-blue
+			text-decoration: underline
+	.fusion-poweredby
+		font-size: modular-scale(1rem, -1, 1.33)
+		text-decoration: none
+		color: #aaa
+		position: absolute
+		bottom: $rs
+		left: $rs
+	.fusion-img
+		position: absolute
+		top: $rs
+		left: $rs
+		height: 110px
+		width: 130px
+
+@media print
+	.post-footer, .site-footer
+		display: none
+	code, pre
+		color: #000
+		background-color: #fff
+
+.page-template-cv
+	.sketch1
+		position: absolute
+		background-image: url('/assets/img/sketch1.gif')
+		top: $rs*5
+		right: $rs*5
+		width: $rs*10
+		height: $rs*10
+		background-size: cover
+	.post-image
+		background-color: #fff !important
+	.post-meta
+		display: none !important
+	.topofpage
+		color: #000 !important
+	.post-title
+		padding-bottom: golden-ratio(1rem, 3) !important
+		color: #000 !important
+		text-shadow: 0 1px $rs/2 rgba(255,255,255,0.5)
+	.post-head
+		background-image: none !important
+	.author
+		font-size: modular-scale(1rem, 0, 1.33)
+		color: #999
+		padding: golden-ratio(1rem, 0) 0 0
+	.custom
+		padding: golden-ratio(1rem, 2) 0 0
+		h1
+			padding: golden-ratio(1rem, 1) 0 golden-ratio(1rem, 0)
+		h3
+			text-align: center
+			padding: 0 0 golden-ratio(1rem, 0)
+			color: #bbb
+			font-weight: 300
+			font-size: modular-scale(1rem, 1, 1.33)
+		h4
+			text-align: center
+			padding: golden-ratio(1rem, 1) 0 golden-ratio(1rem, 2)
+			color: $color-black
+			font-weight: 500
+			font-size: modular-scale(1rem, 0, 1.33)
+			text-transform: uppercase
+			&.subheadline
+				padding-bottom: golden-ratio(1rem, -1)
+		h6
+			font-size: modular-scale(1rem, 0, 1.33)
+			color: #ccc
+			padding: 0 0 golden-ratio(1rem, 1)
+			margin: 0
+			font-weight: 400
+			text-align: center
+			a
+				margin-right: 3px
+				&:hover
+					color: #000
+			&.subheadline
+				padding: 0 0 golden-ratio(1rem, 2)
+		.introduction
+			@include clearfix
+			padding-bottom: golden-ratio(1rem, 1)
+			.left
+				float: none
+				width: 100%
+				padding: 0
+				@include box-sizing(border-box)
+				@include respond-to(800)
+					float: left
+					width: 38%
+					padding: 0 golden-ratio(1rem, -1) 0 0
+				td, th
+					border-top: 0px
+					font-size: modular-scale(1rem, 0, 1.33)
+					padding: 0 0 golden-ratio(1rem, 0) 0
+					text-align: right
+				th
+					padding-right: golden-ratio(1rem, 1)
+					white-space: nowrap
+					color: #666
+					font-weight: 500
+					text-align: right
+					font-size: modular-scale(1rem, -1, 1.33)
+				.skill
+					width: 100%
+					background-color: #eee
+					padding: 0
+					height: modular-scale(0.99rem, 1, 1.33)
+					&:first-child
+						border-top-left-radius: $rs/4
+						border-top-right-radius: $rs/4
+					&:last-child
+						border-bottom-left-radius: $rs/4
+						border-bottom-right-radius: $rs/4
+					.skill-fill
+						background-color: $color-green
+						border-radius: $rs/8
+						height: modular-scale(0.99rem, 1, 1.33)
+						line-height: modular-scale(1rem, 0, 1.33)
+						@include box-sizing(border-box)
+						padding: 0 golden-ratio(1rem, -2)
+						border-bottom: 1px #eee solid
+						float: right
+						text-align: right
+						span
+							font-size: modular-scale(1rem, -1, 1.33)
+							color: #fff
+							line-height: modular-scale(1rem, 0, 1.33)
+			.right
+				float: none
+				width: 100%
+				padding: 0
+				@include box-sizing(border-box)
+				p
+					font-size: modular-scale(1rem, 0, 1.33)
+					line-height: modular-scale(1rem, 1, 1.33)
+					padding-bottom: modular-scale(1rem, 1, 1.33)
+					color: #666
+				@include respond-to(800)
+					float: right
+					width: 62%
+					padding: 0 0 0 golden-ratio(1rem, -1)
+		.work
+			width: 100%
+			margin: 0 0 golden-ratio(1rem, 0)
+			th, td
+				font-size: modular-scale(1rem, 0, 1.33)
+				text-align: right
+				border-top: 0px
+				line-height: 1.4
+				padding: 0 golden-ratio(1rem, -2) golden-ratio(1rem, -2) 0
+				&:last-child
+					text-align: left
+					width: 62%
+					padding: 0 0 golden-ratio(1rem, -2) golden-ratio(1rem, -2)
+				p
+					font-size: modular-scale(1rem, 0, 1.33)
+				&.work__location
+					font-weight: 300
+					color: #ccc
+				&.work__company
+					a
+						color: $color-black
+						&:hover
+							color: $color-green
+				&.work__jobname
+					color: $color-green
+					position: relative
+					.sideproject-image
+						@include box-sizing(border-box)
+						width: golden-ratio(1rem, 3)
+						height: golden-ratio(1rem, 3)
+						border-radius: 50%
+						background-size: cover
+						background-position: center
+						float: right
+						margin: $rs/4 $rs/4 0 0
+						text-indent: -9999px
+						text-align: left
+						box-shadow: inset 0 0 1px #000
+						&.words
+							background-image: url('https://d13yacurqjgara.cloudfront.net/users/2253/screenshots/599342/0011-words-icon.png')
+						&.themes
+							background-image: url('https://d13yacurqjgara.cloudfront.net/users/2253/screenshots/1436246/0073-chiara-1-1.png')
+						&.outofwords
+							background-image: url('https://d13yacurqjgara.cloudfront.net/users/2253/screenshots/865346/0046-words-multicolumn.png')
+				.work__jobtimeframe
+					display: block
+					color: #ccc
+		.note
+			font-size: modular-scale(1rem, 0, 1.33)
+			color: #ccc
+			text-align: center
+		.showcase
+			@include clearfix
+			.showcase__item
+				float: left
+				width: 50%
+				background-size: cover
+				padding-top: 35%
+				@include box-sizing(border-box)
+				position: relative
+				.legend
+					opacity: 0
+					position: absolute
+					top: 0
+					left: 0
+					right: 0
+					bottom: 0
+					background-color: #000
+					color: #fff
+					text-align: center
+					padding: golden-ratio(1rem, 2) 0
+					@include transition (all 0.35s ease-in-out)
+					a
+						color: $color-yellow
+						font-size: modular-scale(1rem, 0, 1.33)
+						display: block
+						text-align: center
+				&:hover .legend
+					opacity: 1
+		.popularposts
+			.post
+				padding: golden-ratio(1rem,  0) golden-ratio(1rem,  1)
+				width: 100%
+				@include box-sizing(border-box)
+				.article-item
+					color: $color-black
+					text-decoration: none
+					display: block
+					@include transition (all 0.35s ease-in-out)
+					&:hover
+						.post-title
+							text-decoration: underline
+						.post-excerpt
+							p
+								color: $color-black
+						
+				header
+					.post-meta
+						font-size: modular-scale(1rem, -1, 1.33) !important
+						line-height: $rs !important
+						height: $rs !important
+						white-space: nowrap !important
+						overflow: hidden !important
+						text-overflow: ellipsis !important
+						padding: modular-scale(1rem, -2, 1.33) 0 !important
+						color: #bbb !important
+						font-weight: 300 !important
+						display: block !important
+						a
+							text-decoration: none !important
+							&:hover
+								text-decoration: underline !important
+					.post-title
+						font-size: modular-scale(1rem, 1, 1.33) !important
+						padding: modular-scale(1rem, 0, 1.33) 0 0 !important
+						margin: 0 !important
+						line-height: modular-scale(1rem, 2, 1.33) !important
+						height: modular-scale(1rem, 2, 1.33) !important
+						font-weight: 500 !important
+						white-space: nowrap !important
+						overflow: hidden !important
+						text-overflow: ellipsis !important
+						a
+							color: $color-black !important
+							text-decoration: none !important
+				.post-excerpt
+					padding: 0 0 modular-scale(1rem, 0, 1.33)
+					p
+						font-size: modular-scale(1rem, 0, 1.33)
+						line-height: 1.4
+						color: #666
+						font-weight: 300
+						padding: 0
+						margin: 0
+		.contact
+			.contact-info
+				width: 62%
+				margin: 0 auto
+				background-color: lighten($color-yellow, 40%)
+				border-radius: $rs/2
+				padding: $rs $rs
+				a
+					color: darken($color-yellow, 10%)
+				@include respond-to(800)
+					padding: $rs*2 $rs*4
+					width: 38%
+
+

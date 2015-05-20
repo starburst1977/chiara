@@ -1,0 +1,152 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+
+<main class="content" role="main">
+    {{#post}}
+    
+        {{#if image}}
+            <article class="{{post_class}} article tag-articleimage" itemscope itemtype="http://schema.org/BlogPosting" role="article">
+        
+                <div class="post-image">
+                    <div class="post-image-image" style="background-image: url({{image}})" data-0="opacity: 1; top: 0px" data-500="opacity: 0.2; top: 250px">
+                        Post Image
+                    </div>
+                    <header class="post-header">
+                        <a href="/" class="button-back"><i class="fa fa-chevron-left "></i></a>
+                        {{#if @blog.logo}}<div class="blog-logo" style="background-image: url({{@blog.logo}})">Blog Logo</div>{{/if}}
+                    </header>
+                    <div class="post-head">
+                        <div class="post-author">
+                            {{#if author.image}}<div class="author-image" style="background-image: url({{author.image}})">Blog Logo</div>{{/if}}
+                            <div class="author-name">By {{author}}</div>
+                        </div>
+                        <h1 class="post-title">{{{title}}}</h1>
+                        <span class="post-meta">
+                            <time datetime="{{date format="YYYY-MM-DD"}}">{{date format='DD MMM YYYY'}}</time>
+                            {{tags prefix="on " separator=" | "}}&nbsp;&nbsp;·&nbsp;&nbsp;
+                            <span class="post-reading">
+                                <span class="post-reading-time"></span>&nbsp;&nbsp;·&nbsp;&nbsp;
+                                <span class="post-word-count"></span> <span>words</span>
+                            </span>
+                        </span>
+                    </div>
+                    <center><a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a></center>
+                </div>
+                
+                <script>
+                    (function ($) {
+                        "use strict";
+                    
+                        $(document).ready(function(){
+                                        
+                    
+                            var $window = $(window),
+                                $image = $('.post-image-image');
+                            $window.on('scroll', function() {
+                                var top = $window.scrollTop();
+                    
+                                if (top < 0 || top > 1500) { return; }
+                                $image
+                                    .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+                                    .css('opacity', 1-Math.max(top/700, 0));
+                            });
+                            $window.trigger('scroll');
+                            
+                            var height = $('.post-image-image').height();
+                                $('.post-content').css('padding-top', height + 'px');
+                                
+                            $(function() {
+                              $('a[href*=#]:not([href=#])').click(function() {
+                                if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                                  var target = $(this.hash);
+                                  target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                                  if (target.length) {
+                                    $('html,body').animate({
+                                      scrollTop: target.offset().top
+                                    }, 500);
+                                    return false;
+                                  }
+                                }
+                              });
+                            });
+                    
+                        });
+                    
+                    }(jQuery));
+                </script>
+                
+            {{else}}
+                <article class="{{post_class}} article" itemscope itemtype="http://schema.org/BlogPosting" role="article">
+                <header class="post-header">
+                    <a href="/" class="button-back"><i class="fa fa-chevron-left "></i></a>
+                    {{#if @blog.logo}}<div class="blog-logo" style="background-image: url({{@blog.logo}})">Blog Logo</div>{{/if}}
+                </header>
+                <div class="post-author">
+                    {{#if author.image}}<div class="author-image" style="background-image: url({{author.image}})">Blog Logo</div>{{/if}}
+                    <div class="author-name">By {{author}}</div>
+                </div>
+                <h1 class="post-title">{{{title}}}</h1>
+                <span class="post-meta">
+                    <time datetime="{{date format="YYYY-MM-DD"}}">{{date format='DD MMM YYYY'}}</time>
+                    {{tags prefix="on " separator=" | "}}&nbsp;&nbsp;·&nbsp;&nbsp;
+                    <span class="post-reading">
+                        <span class="post-reading-time"></span>&nbsp;&nbsp;·&nbsp;&nbsp;
+                        <span class="post-word-count"></span> <span>words</span>
+                    </span>
+                </span>
+                
+            {{/if}}
+            
+            {{image}}
+            
+            <section class="post-content">
+                <a name="topofpage"></a>
+                {{content}}
+            </section>
+            
+            <footer class="post-footer">
+
+                <section class="author">
+                    <div class="author-image" style="background-image: url({{author.image}})">Blog Logo</div>
+                    <h4 itemprop="author" itemscope itemtype="http://schema.org/Person">{{author.name}}</h4>
+                    <p itemprop="description">{{author.bio}}</p>
+                    <p><a href="{{author.website}}">{{author.website}}</a></p>
+                    <p><a href="mailto:{{author.email}}">Drop me an eMail</a> or <a href="http://www.twitter.com/starburst1977">follow me on Twitter</a></p>
+                </section>
+
+                <section class="share">
+                    <div class="left">
+                        <a href="/"><i class="fa fa-angle-left "></i> Back to Overview</a>
+                    </div>
+                    <div class="right">
+                        <p>Share this post:
+                            <a class="icon-twitter" href="http://twitter.com/share?text={{encode title}}&url={{url absolute="true"}}"
+                                onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
+                                onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                            <a class="icon-google-plus" href="https://plus.google.com/share?url={{url absolute="true"}}"
+                               onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </p>
+                    </div>
+                </section>
+                
+                
+                <div class="ad">
+                    <script type="text/javascript" src="//cdn.fusionads.net/fusion.js?zoneid=1332&serve=C6SDP2Y&placement=svenread" id="_fusionads_js"></script>
+                </div>
+                
+            </footer>
+
+        {{/post}}
+
+    </article>
+
+</main>

@@ -1,0 +1,598 @@
+{{!< default}}
+
+{{! This is a page template. A page outputs content just like any other post, and has all the same
+    attributes by default, but you can also customise it to behave differently if you prefer. }}
+
+<main class="content" role="main">
+
+    <article class="{{post_class}} page tag-articleimage">
+        {{#post}}
+        {{#if image}}
+
+            <div class="post-image">
+                <div class="post-image-image" data-0="opacity: 1; top: 0px" data-500="opacity: 0.2; top: 250px" style="background-image: url({{image}})">
+                    Post Image
+                </div>
+                <header class="post-header">
+                    <a href="/" class="button-back"><i class="fa fa-chevron-left "></i></a>
+                    {{#if @blog.logo}}<div class="blog-logo" style="background-image: url({{@blog.logo}})">Blog Logo</div>{{/if}}
+                </header>
+                <div class="post-head">
+                    <h1 class="post-title">{{{title}}}</h1>
+                    <span class="post-meta"><time datetime="{{date format="YYYY-MM-DD"}}">{{date format='DD MMM YYYY'}}</time> {{tags prefix="on " separator=" | "}}</span>
+                </div>
+                <center><a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a></center>
+            </div>
+
+            <script>
+                (function ($) {
+                    "use strict";
+
+                    $(document).ready(function(){
+
+                        var $window = $(window),
+                            $image = $('.post-image-image');
+                        $window.on('scroll', function() {
+                            var top = $window.scrollTop();
+
+                            if (top < 0 || top > 1500) { return; }
+                            $image
+                                .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+                                .css('opacity', 1-Math.max(top/700, 0));
+                        });
+                        $window.trigger('scroll');
+
+                        var height = $('.post-image-image').height();
+                            $('.post-content').css('padding-top', height + 'px');
+
+                        $(function() {
+                          $('a[href*=#]:not([href=#])').click(function() {
+                            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                              var target = $(this.hash);
+                              target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                              if (target.length) {
+                                $('html,body').animate({
+                                  scrollTop: target.offset().top
+                                }, 500);
+                                return false;
+                              }
+                            }
+                          });
+                        });
+
+                    });
+
+                }(jQuery));
+            </script>
+
+        {{else}}
+
+            <header class="post-header">
+                <a href="/" class="button-back"><i class="fa fa-chevron-left "></i></a>
+                {{#if @blog.logo}}<div class="blog-logo" style="background-image: url({{@blog.logo}})">Blog Logo</div>{{/if}}
+            </header>
+
+            <h1 class="post-title">{{{title}}}</h1>
+            <span class="post-meta"><time datetime="{{date format="YYYY-MM-DD"}}">{{date format='DD MMM YYYY'}}</time> {{tags prefix="on " separator=" | "}}</span>
+
+        {{/if}}
+
+
+        <section class="post-content">
+            <a name="topofpage"></a>
+            <div class="custom">
+                <h1>Sven Read</h1>
+                <h3>UX & UI Designer. Art Director. Front End Developer.</h3>
+                <h6><a href="http://www.twitter.com/starburst1977" target="_blank"><i class="fa fa-twitter"></i></a>
+                <a href="http://dribbble.com/Starburst1977" target="_blank"><i class="fa fa-dribbble"></i></a>
+                <a href="https://github.com/starburst1977" target="_blank"><i class="fa fa-github"></i></a>
+                <a href="http://www.linkedin.com/in/svenread" target="_blank"><i class="fa fa-linkedin"></i></a>
+                <a href="http://instagram.com/starburst1977" target="_blank"><i class="fa fa-instagram"></i></a>
+                &nbsp;·&nbsp;<a href="mailto:me@svenread.com">me@svenread.com</a></h6>
+                <br><br>
+                <br>
+                <hr>
+                <h4 class="subheadline">introduction</h4>
+                <h6 class="subheadline">Some brief words about myself and my skills</h6>
+                
+                <section class="introduction">
+                    
+                    <div class="left">
+                        <table cellpadding="0" cellspacing="0">
+                            
+                            <tr>
+                                <td>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 100%">
+                                            <span>UI Design</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 100%">
+                                            <span>UX Design</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 100%">
+                                            <span>Mobile / Responsive Design</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 100%">
+                                            <span>HTML / CSS</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 100%">
+                                            <span>Paper Prototyping</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 100%">
+                                            <span>Design Thinking</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 95%">
+                                            <span>Typography</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 95%">
+                                            <span>Writing Concepts</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 95%">
+                                            <span>Information Architecture</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 95%">
+                                            <span>Cross Device Design</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 95%">
+                                            <span>LESS / SASS</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 90%">
+                                            <span>SVG / Icon-Fonts</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 90%">
+                                            <span>User Research</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 90%">
+                                            <span>Illustrator</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 90%">
+                                            <span>Sketch</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 90%">
+                                            <span>GIT / Subversion</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 90%">
+                                            <span>Confluence / Jira</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 85%">
+                                            <span>Photoshop</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 85%">
+                                            <span>InDesign</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 85%">
+                                            <span>jQuery</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 75%">
+                                            <span>Quark XPs</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 70%">
+                                            <span>JavaScript</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 65%">
+                                            <span>Ruby on Rails</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 50%">
+                                            <span>XCode</span>
+                                        </div>
+                                    </div>
+                                    <div class="skill">
+                                        <div class="skill-fill" style="width: 40%">
+                                            <span>Flash</span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="right">
+                        <p>I am a designer living & working in the Munich area, Germany. </p>
+
+<p>Previously I was the Lead Designer at BörseGo AG, where I led the design of key initiatives across our major products. Design strategy, experience in UX design, semantic markup, systems thinking, sketching and rapid prototyping are the skills that allowed me to impact both the features and the team behind the Guidance, Godmode-Trader and Jandaya experience.</p>
+
+<p>I love designing thoughtful interfaces, creating pleasing experiences and evolving products. Prototyping in and producing standards compliant, efficient markup is part of my everyday workflow.</p>
+
+<p>Besides being obsessed with user experiences, I have a serious infatuation with typography (especially web typography) and created a couple little tools that hopefully make the world a better place, typographically speaking. I built <a href="http://newnet-soft.com/words/" target="_blank">Words App</a> to help people read their Read-it-Later articles on their desktop and I built a few Ghost themes that focus heavily on clarity and typography, as well as an <a href="http://starburst1977.github.io/out-of-words/" target="_blank">Open Source CSS framework</a>.</p>
+
+<p>I have been incredibly blessed to work with amazing people on some amazing products. Special thanks go to my fellow designers and developers from <a href="http://refreshmunich.com" target="_blank">Refresh Munich</a>, who gave me the opportunity to hold a talk at <a href="http://www.uxmunich.com" target="_blank">UX Munich in 2012</a>, in front of an international audience.</p>
+
+<p><b>Specialties</b>: Multi-device, cross-platform systems, responsive web design, mobile design, web typography, UI design, UX design,  Information Architecture, semantic html/css.</p>
+                    </div>
+                </section>
+                <hr>
+                <h4 class="subheadline">wisdom</h4>
+                <h6 class="subheadline">Wise words from people I admire</h6>
+                <blockquote style="padding-top: 0">
+                    Building structure requires serious listening, serious reflection, and serious imagination. All this requires experience, and no matter how experienced you are, it costs you. We spend our time and nerves to save the user their time and nerves. Well-designed things give us the invaluable present of time. Well-designed products do not just save us time, they make us enjoy the time we spend with them. They make us feel that someone has been thinking about us, that a nice person took care of the little things for us.
+                    <div class="author">
+                        Oliver Reichenstein, in <a href="http://ia.net/blog/putting-thought-into-things/">Putting thought into things</a>.
+                    </div>
+                </blockquote>
+                <br>
+                <hr>
+                <h4 class="subheadline">work history</h4>
+                <h6 class="subheadline">Companies I have worked for and their projects</h6>
+                <section class="cv">
+                    <table cellpadding="0" cellspacing="0" class="work">
+                        <tr>
+                            <th class="work__company"><a href="http://www.boerse-go.ag" target="_blank">BörseGo AG</a></th>
+                            <th class="work__location">Munich</th>
+                        </tr>
+                        <tr>
+                            <td class="work__jobname">UI/UX Designer <span class="work__jobtimeframe">2012 - 2014</span></td>
+                            <td class="work__jobdescription">
+                                <p>Switched from Adobe Products to Sketch and Pixelmator, from LESS to Sass. Concept, prototypes and product supervision for our new mobile app (for Android, iOS & web). Additionally work on a new version of <a href="http://www.jandaya.de" target="_blank">Jandaya</a> (concept & prototyping stage).</p></td>
+                        </tr>
+                        <tr>
+                            <td class="work__jobname">Lead Designer <span class="work__jobtimeframe">2010 - 2012</span></td>
+                            <td class="work__jobdescription">
+                                <p>Head of the design team. Concept, wireframes & execution on several big projects,
+                                    including web, mobile web & native mobile apps. <b>Highlights</b>: Concept & Prototype (as well as a part of the execution) for <a href="http://www.guidants.com" target="_blank">Guidants</a>, Concept, Prototyping & execution for redesigning our <a href="http://members.godmode-trader.de" target="_blank">paid members area</a>.</p></td>
+                        </tr>
+                        <tr>
+                            <td class="work__jobname">UI/UX Designer <span class="work__jobtimeframe">2005 - 2010</span></td>
+                            <td class="work__jobdescription">
+                                <p>Concepts, prototyping, execution & coding
+                                    on all our projects. Conducted various usability testings. <b>Highlights</b>: Our first iOS app, <a href="http://www.godmode-trader.de/mobile" target="_blank">Godmode Anywhere</a>. Redesigning <a href="http://www.godmode-trader.de" target="_blank">GodmodeTrader.de</a>. Concept, prototyping and executing <a href="http://www.jandaya.de" target="_blank">Jandaya.de</a>.</p></td>
+                        </tr>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" class="work">
+                        <tr>
+                            <th class="work__company"><a href="http://www.txtagentur.de" target="_blank">txt redaktion & agentur</a></th>
+                            <th class="work__location">Munich</th>
+                        </tr>
+                        <tr>
+                            <td class="work__jobname">Visual Designer <span class="work__jobtimeframe">2005 - 2005</span></td>
+                            <td class="work__jobdescription">
+                                <p>Layouting, print design, graphic design. Project responsibility for various customers,
+                                    but mostly Süddeutsche Zeitung.</p></td>
+                        </tr>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" class="work">
+                        <tr>
+                            <th class="work__company">Freelancing</th>
+                            <th class="work__location"></th>
+                        </tr>
+                        <tr>
+                            <td class="work__jobname">UI/UX Designer <span class="work__jobtimeframe">2003 - 2005</span></td>
+                            <td class="work__jobdescription">
+                                <p>Many of different customers, like Carrera Industriesauger (Munich), Public Perception (Köln),
+                                    Schneider GmbH (Haag i.Obb.) and more.</p></td>
+                        </tr>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" class="work">
+                        <tr>
+                            <th class="work__company"><a href="http://www.innnet.de" target="_blank">Innnet GmbH</a></th>
+                            <th class="work__location">Wasserburg am Inn</th>
+                        </tr>
+                        <tr>
+                            <td class="work__jobname">UI/UX Designer <span class="work__jobtimeframe">2002 - 2003</span></td>
+                            <td class="work__jobdescription">
+                                <p>Layout & coding on various different customer projects. Concept, wireframes & coding for company CMS system.</p></td>
+                        </tr>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" class="work">
+                        <tr>
+                            <th class="work__company"><a href="http://www.cynobia.de" target="_blank">Cynobia AG</a></th>
+                            <th class="work__location">Munich</th>
+                        </tr>
+                        <tr>
+                            <td class="work__jobname">Screen Designer <span class="work__jobtimeframe">1999 - 2002</span></td>
+                            <td class="work__jobdescription">
+                                <p>3 year job training as screen designer. Project orientated work mostly,
+                                    on www.politik.de & www.womenweb.de.</p></td>
+                        </tr>
+                    </table>
+                </section>
+                <hr>
+                <h4 class="subheadline">side projects</h4>
+                <h6 class="subheadline">Commercial as well as Open Source. Check out my <a href="https://github.com/starburst1977" target="_blank">Github Repo</a> for more.</h6>
+                <section class="cv">
+                    <table cellpadding="0" cellspacing="0" class="work">
+                        <tr>
+                            <th class="work__company"><a href="http://www.cynobia.de" target="_blank">Words</a></th>
+                            <th class="work__location">Mac App</th>
+                        </tr>
+                        <tr>
+                            <td class="work__jobname"><div class="sideproject-image words">Words</div></td>
+                            <td class="work__jobdescription"><p>My most cherished side project. A native read-it-later client for Mac I built
+                                together with my father and brother. Now nearly around 3 years in the <a href="http://newnet-soft.com/words/" target="_blank">AppStore</a>. We got several nice reviews,
+                                the most interesting one is probably this <a href="http://mac.appstorm.net/reviews/lifestyle/words-2-a-brand-new-take-on-reading-later/" target="_blank">one by MacAppStorm</a>.</p></td>
+                        </tr>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" class="work">
+                        <tr>
+                            <th class="work__company"><a href="http://www.cynobia.de" target="_blank">Readium, Chiara & Marisa</a></th>
+                            <th class="work__location">Ghost Themes</th>
+                        </tr>
+                        <tr>
+                            <td class="work__jobname"><div class="sideproject-image themes">Chiara & Marisa</div></td>
+                            <td class="work__jobdescription"><p>The open source <a href="http://www.ghost.org" target="_blank">Ghost project</a> fascinated me from the beginning. As it became
+                                publicly available I started out building themes for it. <a href="http://www.svenread.com/readium-ghost-theme/" target="_blank">Readium</a>, <a href="http://www.svenread.com/chiara/" target="_blank">Chiara</a> and <a href="http://www.svenread.com/marisa/" target="_blank">Marisa</a> are the three that struck a cord
+                                for many people and now belong to most popular commercial themes for Ghost. <b>Note</b>: This blog runs on Chiara.</p></td>
+                        </tr>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" class="work">
+                        <tr>
+                            <th class="work__company"><a href="http://www.cynobia.de" target="_blank">Out of Words</a></th>
+                            <th class="work__location">CSS Framework</th>
+                        </tr>
+                        <tr>
+                            <td class="work__jobname"><div class="sideproject-image outofwords">Readium, Chiara & Marisa</div></td>
+                            <td class="work__jobdescription"><p>This is the CSS typography framework I wrote for Words to enable the responsive multi-column article
+                                layout that we use inside the app. Additionally, <a href="http://starburst1977.github.io/out-of-words/" target="_blank">I open sourced it on Github</a>.</p></td>
+                        </tr>
+                    </table>
+                </section>
+                <hr>
+               <h4 class="subheadline">talks</h4>
+                <h6 class="subheadline">Public talks I held the last few years</h6>
+                <section class="cv">
+                    <table cellpadding="0" cellspacing="0" class="work">
+                        <tr>
+                            <th class="work__company"><a href="http://www.uxmunich.com" target="_blank">UX Munich</a></th>
+                            <th class="work__location">Munich</th>
+                        </tr>
+                        <tr>
+                            <td class="work__jobname">Bleeding Edge UX <span class="work__jobtimeframe">2012</span></td>
+                            <td class="work__jobdescription">
+                                <p>The desktop experience inside the browser. You can watch the talk here: <a href="http://vimeo.com/album/2463911/video/65885734" target="_blank">Bleeding Edge UX</a></p>
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" class="work">
+                        <tr>
+                            <th class="work__company"><a href="http://www.refreshmunich.com" target="_blank">Refresh Munich</a></th>
+                            <th class="work__location">Munich</th>
+                        </tr>
+                        <tr>
+                            <td class="work__jobname">Responsive Multicolumn CSS <span class="work__jobtimeframe">2013</span></td>
+                            <td class="work__jobdescription">
+                                <p>A lightning talk on how to make responsive layouts while using CSS to make complex multicolumn layouts.</p></td>
+                        </tr>
+                    </table>
+                </section>
+                <hr>
+                <h4 class="subheadline">training</h4>
+                <h6 class="subheadline">Training sessions I attended the last years</h6>
+                <section class="cv">
+                    <table cellpadding="0" cellspacing="0" class="work">
+                        <tr>
+                            <th class="work__company"><a href="http://2011.buildconf.com/" target="_blank">Build Conference</a></th>
+                            <th class="work__location">Belfast</th>
+                        </tr>
+                        <tr>
+                            <td class="work__jobname"><a href="http://2011.buildconf.com/workshops" target="_blank">Responsive Enhancement</a> <span class="work__jobtimeframe">2011</span></td>
+                            <td class="work__jobdescription">
+                                <p>A workshop on teaching how to construct web sites that will feel natural on a whole range of devices, from mobile phones to tablets, laptops, e-readers and devices we haven’t even thought of yet.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="work__jobname"><a href="http://2011.buildconf.com/fringe#event_spiekermann" target="_blank">An Evening With Erik Spiekermann</a> <span class="work__jobtimeframe">2011</span></td>
+                            <td class="work__jobdescription">
+                                <p>A workshop to discuss type design and it’s evolution as influenced by the rise of strong typography on the web.</p>
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" class="work">
+                        <tr>
+                            <th class="work__company"><a href="http://www.nngroup.com/training/london/" target="_blank">Usability Week</a></th>
+                            <th class="work__location">London</th>
+                        </tr>
+                        <tr>
+                            <td class="work__jobname">Complex Applications and Websites <span class="work__jobtimeframe">2010</span></td>
+                            <td class="work__jobdescription">
+                                <p>A 3-day course containing interaction patterns and special user experience techniques for data-rich user interfaces.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="work__jobname">Mobile User Experiences <span class="work__jobtimeframe">2010</span></td>
+                            <td class="work__jobdescription">
+                                <p>A 2-day course containing essential UX Design Principles for Small-Screen Websites and Apps</p>
+                            </td>
+                        </tr>
+                    </table>
+                    <table cellpadding="0" cellspacing="0" class="work">
+                        <tr>
+                            <th class="work__company"><a href="http://www.masterclass-artdirection.de" target="_blank">MCAD</a></th>
+                            <th class="work__location">Munich</th>
+                        </tr>
+                        <tr>
+                            <td class="work__jobname">Masterclass of Artdirection <span class="work__jobtimeframe">2010</span></td>
+                            <td class="work__jobdescription">
+                                <p>A 2-month long workshop to prep young creatives for higher positions in agencies. I learned a lot of inspiring stuff from great advertising experts.</p></td>
+                        </tr>
+                    </table>
+                </section>
+                <hr>
+                <h4 class="subheadline">showcase</h4>
+                <h6 class="subheadline">Selected project screenshots for your pleasure</h6>
+                <section class="showcase">
+                    <div class="showcase__item" style="background-image: url(https://d13yacurqjgara.cloudfront.net/users/2253/screenshots/289144/dribbble-88-charting-nav.png)">
+                        <div class="legend">
+                            Charting Navigation
+                            <a href="https://dribbble.com/shots/289144-Charting-Navigation-Final" target="_blank">Check out the shot on Dribbble</a>
+                        </div>
+                    </div>
+                    <div class="showcase__item" style="background-image: url(https://d13yacurqjgara.cloudfront.net/users/2253/screenshots/957681/0052-wordsbeta-final_1x.png)">
+                        <div class="legend">
+                            Words 2 Final Design
+                            <a href="https://dribbble.com/shots/957681-Words-2-Final-Beta-the-serious-version-now-available" target="_blank">Check out the shot on Dribbble</a>
+                        </div>
+                    </div>
+                    <div class="showcase__item" style="background-image: url(https://d13yacurqjgara.cloudfront.net/users/2253/screenshots/606097/0016-words-appicon.png)">
+                        <div class="legend">
+                            Words Icon
+                            <a href="https://dribbble.com/shots/957681-Words-2-Final-Beta-the-serious-version-now-available" target="_blank">Check out the shot on Dribbble</a>
+                        </div>
+                    </div>
+                    <div class="showcase__item" style="background-image: url(https://d13yacurqjgara.cloudfront.net/users/2253/screenshots/462005/dribbble-131-tradegrid-desk.png)">
+                        <div class="legend">
+                            Guidants Desktop
+                            <a href="https://dribbble.com/shots/462005-Desk" target="_blank">Check out the shot on Dribbble</a>
+                        </div>
+                    </div>
+                    <div class="showcase__item" style="background-image: url(https://d13yacurqjgara.cloudfront.net/users/2253/screenshots/467319/dribbble-134-uiset.png)">
+                        <div class="legend">
+                            Resolution Independent UI Set
+                            <a href="https://dribbble.com/shots/467319-Resolution-Independent-UI-Set-Final" target="_blank">Check out the shot on Dribbble</a>
+                        </div>
+                    </div>
+                    <div class="showcase__item" style="background-image: url(https://d13yacurqjgara.cloudfront.net/users/2253/screenshots/232229/dribbble-65-store-full.png)">
+                        <div class="legend">
+                            Guidants Store
+                            <a href="https://dribbble.com/shots/462005-Desk" target="_blank">Check out the shot on Dribbble</a>
+                        </div>
+                    </div>
+                    <div class="showcase__item" style="background-image: url(https://d13yacurqjgara.cloudfront.net/users/2253/screenshots/781224/0039-macosxgui_1x.png)">
+                        <div class="legend">
+                            Mac OSX HTML GUI Set
+                            <a href="https://dribbble.com/shots/467319-Resolution-Independent-UI-Set-Final" target="_blank">Check out the shot on Dribbble</a>
+                        </div>
+                    </div>
+                    <div class="showcase__item" style="background-image: url(https://d13yacurqjgara.cloudfront.net/users/2253/screenshots/741520/0034-logo-read.png)">
+                        <div class="legend">
+                            My logo
+                            <a href="https://dribbble.com/shots/741520-New-logo-for-myself" target="_blank">Check out the shot on Dribbble</a>
+                        </div>
+                    </div>
+                    <div class="showcase__item" style="background-image: url(https://d13yacurqjgara.cloudfront.net/users/2253/screenshots/342915/dribbble-102-charting-icons.png)">
+                        <div class="legend">
+                            Widget for members area
+                            <a href="https://dribbble.com/shots/342915-Werte" target="_blank">Check out the shot on Dribbble</a>
+                        </div>
+                    </div>
+                    <div class="showcase__item" style="background-image: url(https://d13yacurqjgara.cloudfront.net/users/2253/screenshots/1288370/0065-wordssidebar_1x.png)">
+                        <div class="legend">
+                            Words 2 Redesign
+                            <a href="https://dribbble.com/shots/1288370-Redesigned-Sidebar" target="_blank">Check out the shot on Dribbble</a>
+                        </div>
+                    </div>
+                    <div class="showcase__item" style="background-image: url(https://d13yacurqjgara.cloudfront.net/users/2253/screenshots/1436246/0073-chiara-1-1_1x.png)">
+                        <div class="legend">
+                            Chiara Ghost Theme
+                            <a href="https://dribbble.com/shots/1436246-Golden-Ratio-Modular-Scaling-Responsive?list=users&offset=4" target="_blank">Check out the shot on Dribbble</a>
+                        </div>
+                    </div>
+                    <div class="showcase__item" style="background-image: url(https://d13yacurqjgara.cloudfront.net/users/2253/screenshots/842671/0045-grid-newui-2.png)">
+                        <div class="legend">
+                            New User Area Guidants
+                            <a href="https://dribbble.com/shots/842671-New-UI-part-2" target="_blank">Check out the shot on Dribbble</a>
+                        </div>
+                    </div>
+                </section>
+                <br><br><br>
+                <hr>
+                <h4 class="subheadline">blog posts</h4>
+                <h6 class="subheadline">Some of my blog posts that may be of interest for you</h6>
+                <section class="popularposts">
+                    <article class="post tag-articleimage tag-design tag-code tag-javascript tag-learning" itemscope="" itemtype="http://schema.org/BlogPosting" role="article">
+                        <div class="article-item">
+                            <header>
+                                <h2 class="post-title" itemprop="name"><a href="/learning-javascript-as-a-designer/" itemprop="url">Learning JavaScript as a designer</a></h2>
+                                <span class="post-meta"><time datetime="2014-05-19">19 May 2014</time> on <a href="/tag/articleimage/">articleImage</a>, <a href="/tag/design/">design</a>, <a href="/tag/code/">code</a>, <a href="/tag/javascript/">javascript</a>, <a href="/tag/learning/">learning</a></span>
+                            </header>
+                            <section class="post-excerpt" itemprop="description">
+                                <p> "Give a man a fish and he will eat for the day. Teach a man to fish and he will eat for a lifetime." Two weeks ago, I decided that my very basic JavaScript knowledge wasn't enough anymore. Lately, every project I worked on utilized JS heavily. I…</p>
+                            </section>
+                        </div>
+                    </article>
+                    <article class="post tag-theme tag-ghost-post tag-theme-2 tag-golden-ratio tag-ghost-tag tag-chiara tag-marisa" itemscope="" itemtype="http://schema.org/BlogPosting" role="article">
+                        <div class="article-item">
+                            <header>
+                                <h2 class="post-title" itemprop="name"><a href="/golden-ratio-modular-scaling-on-a-responsive-website/" itemprop="url">Golden Ratio + Modular Scaling + Responsive</a></h2>
+                                <span class="post-meta"><time datetime="2014-02-21">21 Feb 2014</time> on <a href="/tag/theme/">Theme</a>, <a href="/tag/ghost-post/">Ghost</a>, <a href="/tag/theme-2/">theme</a>, <a href="/tag/golden-ratio/">golden ratio</a>, <a href="/tag/ghost-tag/">ghost</a>, <a href="/tag/chiara/">chiara</a>, <a href="/tag/marisa/">marisa</a></span>
+                            </header>
+                            <section class="post-excerpt" itemprop="description">
+                                <p>For the last few years I have read quite a lot about classic book layouting. It is fascinating to see the design systems that have evolved in hundreds of years shaped the book to be what it is today.  Especially the work of Jan Tschichold amazed me .…</p>
+                            </section>
+                        </div>
+                    </article>
+                    <article class="post tag-theme tag-ghost-post tag-articleimage tag-design tag-code featured" itemscope="" itemtype="http://schema.org/BlogPosting" role="article">
+                        <div class="article-item">
+                            <header>
+                                <h2 class="post-title" itemprop="name"><a href="/a-designers-guide-to-ghost-theming/" itemprop="url">A Designers Guide to Ghost Theming</a></h2>
+                                <span class="post-meta"><time datetime="2014-04-09">09 Apr 2014</time> on <a href="/tag/theme/">Theme</a>, <a href="/tag/ghost-post/">Ghost</a>, <a href="/tag/articleimage/">articleImage</a>, <a href="/tag/design/">design</a>, <a href="/tag/code/">code</a></span>
+                            </header>
+                            <section class="post-excerpt" itemprop="description">
+                                <p> "A beautifully designed platform dedicated to one thing: Publishing."     Lately a lot of people ask me on how to start out with making a theme for Ghost. And yes, after building three themes myself I have some experience in doing this stuff. Check …</p>
+                            </section>
+                        </div>
+                    </article>
+                </section>
+                <hr>
+                <h4>Want to get in touch?</h4>
+                <section class="contact">
+                    <div class="contact-info">
+                        Sven Read<br>
+                        Dahlienstr. 18<br>
+                        83125 Eggstätt<br>
+                        <i class="fa fa-comments"></i> <a href="mailto:me@svenread.com">me@svenread.com</a><br>
+                        <i class="fa fa-twitter"></i> <a href="http://www.twitter.com/starburst1977">@starburst1977</a>
+                    </div>
+                </section>
+                <br>
+                <hr>
+                <br>
+            </div>
+            
+            
+            
+            {{content}}
+        </section>
+
+        {{/post}}
+
+
+    </article>
+
+</main>
