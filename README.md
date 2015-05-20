@@ -1,6 +1,6 @@
 # Chiara Ghost Theme
 
-Thanks for purchasing Chiara. I hope you like. If you have a question, feel free to drop me note at me@svenread.com.
+This is my old Ghost theme Chiara, previously sold on CreativeMarket. Due to not having enough time anymore to further develop the theme, I open sourced it. Anybody feel free to update and customize it. 
 
 Dont forget to change the Google Analytics account to yours in this line of code, which can be found in default.hbs:
 
@@ -25,5 +25,3 @@ Image alt tags will automatically get rendered as figcaptions beneath your image
 In case you have any question, please let me know on me@svenread.com or @starburst1977.
 
 Have fun.
-
-bye Sven
